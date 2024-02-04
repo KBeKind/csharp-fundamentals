@@ -20,9 +20,19 @@ Console.WriteLine("Welcome to Bethany's Pie Shop HRM");
 
 //double yearlyWageWithBonusDouble = Utilities.CalculateYearlyWage(amountDouble, monthsDouble, bonusDouble);
 
-Utilities.UsingOptionalParameters();
+//Utilities.UsingOptionalParameters();
 
-Utilities.UsingNamedArguments();
+//Utilities.UsingNamedArguments();
+
+//Utilities.ManipulatingStrings();
+
+//Utilities.UsingEscapeCharacters();
+
+//Utilities.UsingStringEquality();
+
+Utilities.ParsingStrings();
+
+
 
 Console.ReadLine();
 
