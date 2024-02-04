@@ -30,10 +30,10 @@ Console.WriteLine("Welcome to Bethany's Pie Shop HRM");
 
 //Utilities.UsingStringEquality();
 
-Utilities.ParsingStrings();
+//Utilities.ParsingStrings();
 
 
 
-Console.ReadLine();
+//Console.ReadLine();
 
 
