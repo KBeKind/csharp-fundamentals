@@ -1,0 +1,14 @@
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\CSharpFundamentalsConsoleApp1.exe
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\CSharpFundamentalsConsoleApp1.deps.json
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\CSharpFundamentalsConsoleApp1.runtimeconfig.json
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\CSharpFundamentalsConsoleApp1.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\CSharpFundamentalsConsoleApp1.pdb
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.AssemblyInfo.cs
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\refint\CSharpFundamentalsConsoleApp1.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.pdb
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.genruntimeconfig.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\ref\CSharpFundamentalsConsoleApp1.dll
