@@ -20,11 +20,23 @@ namespace CSharpFundamentalsConsoleApp1
 
 		public DateTime birthDay;
 
+		const int minimalHoursWorkedUnit = 1;
+
+		public Employee(string firstName, string lastName, string email, DateTime birthDay) : this(firstName, lastName, email, birthDay, 0) { }
+		
+		
+		public Employee(string firstName, string lastName, string email, DateTime birthDay, double hourlyRate)
+		{
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.email = email;
+			this.birthDay = birthDay;
+			this.hourlyRate = hourlyRate;
+		}
+
 		public void PerformWork()
 		{
-			numberOfHoursWorked++;
-			Console.WriteLine($"{firstName} {lastName} has worked for {numberOfHoursWorked} hour(s)");
-
+			PerformWork(minimalHoursWorkedUnit);
 		}
 
 		public void PerformWork(int hours)
@@ -36,14 +48,13 @@ namespace CSharpFundamentalsConsoleApp1
 
 		public double ReceiveWage(bool resetHours = true)
 		{
-			wage = numberOfHoursWorked * hourlyRate;
+			double wage = numberOfHoursWorked * hourlyRate;
 			Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
 			
 			if (resetHours)
 			{
 				numberOfHoursWorked = 0;
 			}
-			
 			return wage;
 		}
 
@@ -52,6 +63,22 @@ namespace CSharpFundamentalsConsoleApp1
 			Console.WriteLine($"\nFirst name: {firstName}\nLast name: {lastName}\nEmail: {email}\nBirthday: {birthDay.ToShortDateString()}\n");
 		}
 
+
+
+		public void CalculateBonus(ref int bonus, out int bonus2)
+		{
+
+			bonus2 = 0;
+			if(numberOfHoursWorked > 10)
+			{
+				bonus += 1000;
+				bonus2 = bonus + 10000;
+			}
+			
+		}
+
+
+	
 
 
 	}
