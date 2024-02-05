@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpFundamentalsConsoleApp1
+namespace CSharpFundamentalsConsoleApp1.Accounting
+
 {
-	enum EmployeeType
-	{
-		Sales,
-		Manager,
-		Research,
-		StoreManager
-
-
-	}
+	public record Account(string AccountNumber);
+	
+	
 }

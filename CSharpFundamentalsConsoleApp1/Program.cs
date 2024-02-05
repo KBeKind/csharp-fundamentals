@@ -1,5 +1,5 @@
-﻿
-using CSharpFundamentalsConsoleApp1;
+﻿using CSharpFundamentalsConsoleApp1.Accounting;
+using CSharpFundamentalsConsoleApp1.HR;
 using System.Text;
 
 Console.WriteLine("Welcome to Bethany's Pie Shop HRM");
@@ -105,3 +105,5 @@ workTask.description = "Bake pies";
 workTask.hours = 3;
 
 workTask.PerformWorkTask();
+
+Account account = new Account("123432");
