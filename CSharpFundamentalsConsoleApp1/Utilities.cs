@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BethanysPieShopHRM
+namespace CSharpFundamentalsConsoleApp1
 {
 	internal class Utilities
 	{

@@ -20,18 +20,21 @@ namespace CSharpFundamentalsConsoleApp1
 
 		public DateTime birthDay;
 
+		public EmployeeType employeeType;
+
 		const int minimalHoursWorkedUnit = 1;
 
-		public Employee(string firstName, string lastName, string email, DateTime birthDay) : this(firstName, lastName, email, birthDay, 0) { }
+		public Employee(string firstName, string lastName, string email, DateTime birthDay) : this(firstName, lastName, email, birthDay, 0, EmployeeType.StoreManager) { }
 		
 		
-		public Employee(string firstName, string lastName, string email, DateTime birthDay, double hourlyRate)
+		public Employee(string firstName, string lastName, string email, DateTime birthDay, double hourlyRate, EmployeeType employeeType)
 		{
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.email = email;
 			this.birthDay = birthDay;
 			this.hourlyRate = hourlyRate;
+			this.employeeType = employeeType;
 		}
 
 		public void PerformWork()
@@ -48,7 +51,18 @@ namespace CSharpFundamentalsConsoleApp1
 
 		public double ReceiveWage(bool resetHours = true)
 		{
-			double wage = numberOfHoursWorked * hourlyRate;
+			double wage;
+
+			if (employeeType == EmployeeType.Manager)
+			{
+				wage = numberOfHoursWorked * hourlyRate * 1.5;
+			}
+			else
+			{
+				wage = numberOfHoursWorked * hourlyRate;
+
+			}
+
 			Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
 			
 			if (resetHours)
