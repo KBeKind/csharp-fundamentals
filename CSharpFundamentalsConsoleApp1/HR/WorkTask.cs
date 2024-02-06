@@ -13,8 +13,7 @@ namespace CSharpFundamentalsConsoleApp1.HR
 
         public void PerformWorkTask()
         {
-            Console.WriteLine($"Performing work task: {description} for {hours} hours");
+            Console.WriteLine($"Task {description} of {hours} hour(s) has been performed.");
         }
-
     }
 }

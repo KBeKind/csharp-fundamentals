@@ -13,3 +13,7 @@ C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundam
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.genruntimeconfig.cache
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\ref\CSharpFundamentalsConsoleApp1.dll
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.sourcelink.json
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\BethanysPieShopHRM.Logic.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\obj\Debug\net8.0\CSharpFundamentalsConsoleApp1.csproj.CopyComplete
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpFundamentalsConsoleApp\CSharpFundamentalsConsoleApp1\bin\Debug\net8.0\Newtonsoft.Json.dll
