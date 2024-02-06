@@ -1,42 +1,130 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BethanysPieShopHRM.Logic;
+using Newtonsoft.Json;
 
 namespace CSharpFundamentalsConsoleApp1.HR
 {
-    internal class Employee
+    public class Employee: IEmployee
     {
+        private string firstName;
+        private string lastName;
+        private string email;
 
-        public string firstName;
-        public string lastName;
-        public string email;
+        private int numberOfHoursWorked;
+        private double wage;
+        private double? hourlyRate;
 
-        public int numberOfHoursWorked;
-        public double wage;
-        public double hourlyRate;
+        private DateTime birthDay;
+        private const int minimalHoursWorkedUnit = 1;
 
-        public DateTime birthDay;
-
-        public EmployeeType employeeType;
-
-        const int minimalHoursWorkedUnit = 1;
+        private Address address;
 
         public static double taxRate = 0.15;
 
-        public Employee(string firstName, string lastName, string email, DateTime birthDay) : this(firstName, lastName, email, birthDay, 0, EmployeeType.StoreManager) { }
-
-
-        public Employee(string firstName, string lastName, string email, DateTime birthDay, double hourlyRate, EmployeeType employeeType)
+        public string FirstName
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.email = email;
-            this.birthDay = birthDay;
-            this.hourlyRate = hourlyRate;
-            this.employeeType = employeeType;
+            get { return firstName; }
+            set
+            {
+                firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                lastName = value;
+            }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public int NumberOfHoursWorked
+        {
+            get { return numberOfHoursWorked; }
+            protected set
+            {
+                numberOfHoursWorked = value;
+            }
+        }
+
+        public double Wage
+        {
+            get { return wage; }
+            private set
+            {
+                wage = value;
+            }
+        }
+
+        public double? HourlyRate
+        {
+            get { return hourlyRate; }
+            set
+            {
+                if (hourlyRate < 0)//this should always be higher than 0
+                {
+                    hourlyRate = 0;
+                }
+                else
+                {
+                    hourlyRate = value;
+
+                }
+            }
+        }
+
+        public DateTime BirthDay
+        {
+            get { return birthDay; }
+            set
+            {
+                birthDay = value;
+            }
+        }
+
+        public Address Address
+        {
+            get { return address; }
+            set
+            {
+                address = value;
+            }
+        }
+
+
+        public Employee(string firstName, string lastName, string email, DateTime birthDay)
+            : this(firstName, lastName, email, birthDay, 0)
+        {
+        }
+
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+            
+        }
+
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, string street, string houseNumber, string zip, string city)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+
+            Address = new Address(street, houseNumber, zip, city);  
         }
 
         public void PerformWork()
@@ -44,54 +132,90 @@ namespace CSharpFundamentalsConsoleApp1.HR
             PerformWork(minimalHoursWorkedUnit);
         }
 
-        public void PerformWork(int hours)
+        public void PerformWork(int numberOfHours)
         {
-            numberOfHoursWorked += hours;
-            Console.WriteLine($"{firstName} {lastName} has worked for {numberOfHoursWorked} hour(s)");
+            NumberOfHoursWorked += numberOfHours;
+            NumberOfHoursWorked++;
+
+            Console.WriteLine($"{FirstName} {LastName} has worked for {numberOfHours} hour(s)!");
+        }
+
+        public int CalculateBonus(int bonus)
+        {
+
+            if (NumberOfHoursWorked > 10)
+                bonus *= 2;
+
+            Console.WriteLine($"The employee got a bonus of {bonus}");
+            return bonus;
+        }
+
+        public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
+        {
+            bonusTax = 0;
+            if (NumberOfHoursWorked > 10)
+                bonus *= 2;
+
+            if (bonus >= 200)
+            {
+                bonusTax = bonus / 10;
+                bonus -= bonusTax;
+            }
+
+            Console.WriteLine($"The employee got a bonus of {bonus} and the tax on the bonus is {bonusTax}");
+            return bonus;
+        }
+
+        public virtual void GiveBonus()
+        {
+            Console.WriteLine($"{FirstName} {LastName} received a generic bonus of 100!");
         }
 
         public double ReceiveWage(bool resetHours = true)
         {
-            double wage;
+            double wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
+            double taxAmount = wageBeforeTax * taxRate;
 
-            if (employeeType == EmployeeType.Manager)
-            {
-                wage = numberOfHoursWorked * hourlyRate * 1.5;
-            }
-            else
-            {
-                wage = numberOfHoursWorked * hourlyRate;
-            }
+            Wage = wageBeforeTax - taxAmount;
 
-            Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
+            Console.WriteLine($"{FirstName} {LastName} has received a wage of {Wage} for {NumberOfHoursWorked} hour(s) of work.");
 
             if (resetHours)
-            {
-                numberOfHoursWorked = 0;
-            }
-            return wage;
+                NumberOfHoursWorked = 0;
+
+            return Wage;
+        }
+
+        public double CalculateWage()
+        {
+            WageCalculations wageCalculations = new WageCalculations();
+
+            double calculateValue = wageCalculations.ComplexWageCalculation(Wage, taxRate, 3, 42);
+
+            return calculateValue;
+
+        }
+
+        public string ConvertToJson()
+        {
+            string json = JsonConvert.SerializeObject(this);
+
+            return json;
+        }
+
+        public static void DisplayTaxRate()
+        {
+            Console.WriteLine($"The current tax rate is {taxRate}");
         }
 
         public void DisplayEmployeeDetails()
         {
-            Console.WriteLine($"\nFirst name: {firstName}\nLast name: {lastName}\nEmail: {email}\nBirthday: {birthDay.ToShortDateString()}\n");
+            Console.WriteLine($"\nFirst name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}\nBirthday: \t{BirthDay.ToShortDateString()}\n");
         }
 
-        public void CalculateBonus(ref int bonus, out int bonus2)
+        public void GiveCompliment()
         {
-            bonus2 = 0;
-            if (numberOfHoursWorked > 10)
-            {
-                bonus += 1000;
-                bonus2 = bonus + 10000;
-            }
+            Console.WriteLine($"You've done a great job, {FirstName}");
         }
-
-
-        public static void DisplayTaxRate()
-        {
-            Console.WriteLine($"The tax rate is {taxRate}");
-        }
-
     }
 }

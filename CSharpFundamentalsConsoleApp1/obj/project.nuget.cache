@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "D0uZVUS6DigXrKujQTg+bPkxIdVcMUtwU3Bf6fb2dPDHPNfGTNuff/uX5BE8LD1usc3YdCS7eiQ1zn+P8TCDJg==",
+  "dgSpecHash": "mscRAV9QUBMxbhprs4wKuLqvMtavvGDGIQtfTtEFuSR2En8kYmhY8c5YoZ3nu8vxEOB9dXYyM0e/+aVl/94M4A==",
   "success": true,
   "projectFilePath": "C:\\Users\\kyler\\Desktop\\DOTNET-PRACTICE\\CSharpFundamentalsConsoleApp\\CSharpFundamentalsConsoleApp1\\CSharpFundamentalsConsoleApp1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kyler\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

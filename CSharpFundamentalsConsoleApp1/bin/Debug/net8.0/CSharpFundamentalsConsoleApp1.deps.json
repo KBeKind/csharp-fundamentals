@@ -7,8 +7,28 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "CSharpFundamentalsConsoleApp1/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "BethanysPieShopHRM.Logic": "1.0.0.0"
+        },
         "runtime": {
           "CSharpFundamentalsConsoleApp1.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
+      "BethanysPieShopHRM.Logic/1.0.0.0": {
+        "runtime": {
+          "BethanysPieShopHRM.Logic.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -16,6 +36,18 @@
   "libraries": {
     "CSharpFundamentalsConsoleApp1/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
+    "BethanysPieShopHRM.Logic/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

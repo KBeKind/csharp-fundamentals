@@ -2,108 +2,166 @@
 using CSharpFundamentalsConsoleApp1.HR;
 using System.Text;
 
-Console.WriteLine("Welcome to Bethany's Pie Shop HRM");
 
+//Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25, EmployeeType.Manager);
+//Employee george = new("George", "Jones", "george@snowball.be", new DateTime(1984, 3, 28), 30, EmployeeType.Research);
+//Employee mary = new Employee("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30, EmployeeType.Manager);
+//Employee bobJunior = new Employee("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17, EmployeeType.Research);
+//Employee kevin = new Employee("Kevin", "Marks", "kevin@snowball.be", new DateTime(1953, 12, 12), 10, EmployeeType.StoreManager);
+//Employee kate = new Employee("Kate", "Greggs", "kate@snowball.be", new DateTime(1993, 8, 8), 10, EmployeeType.StoreManager);
+//Employee kim = new Employee("Kim", "Jacobs", "kim@snowball.be", new DateTime(1975, 5, 14), 22, EmployeeType.StoreManager);
 
-//int amount = 1234;
-//int months = 12;
-//int bonus = 1000;
-
-//int yearlyWage = Utilities.CalculateYearlyWage(amount, months);
-//int yearlyWageWithBonus = Utilities.CalculateYearlyWage(amount, months, bonus);
-
-//Console.WriteLine($"Yearly wage: {yearlyWage}");
-
-
-//double amountDouble = 1500.0;
-//double monthsDouble = 12;
-//double bonusDouble = 1000;
-
-//double yearlyWageWithBonusDouble = Utilities.CalculateYearlyWage(amountDouble, monthsDouble, bonusDouble);
-
-//Utilities.UsingOptionalParameters();
-
-//Utilities.UsingNamedArguments();
-
-//Utilities.ManipulatingStrings();
-
-//Utilities.UsingEscapeCharacters();
-
-//Utilities.UsingStringEquality();
-
-//Utilities.ParsingStrings();
+//Employee[] employees = new Employee[7];
 
 
 
-//Console.ReadLine();
+//employees[0] = bethany;
+//employees[1] = george;
+//employees[2] = mary;
+//employees[3] = bobJunior;
+//employees[4] = kevin;
+//employees[5] = kate;
+//employees[6] = kim;
 
 
 
-DateTime birthday = new DateTime(2000, 1, 1);
+//foreach (var employee in employees)
+//{
+//    employee.DisplayEmployeeDetails();
+//    var numberOfHoursWorked = new Random().Next(25);
+//    employee.PerformWork(numberOfHoursWorked);
+//    employee.ReceiveWage();
+//}
 
-Employee employee1 = new Employee("Bethany", "Smith", "BS@mail.com", birthday, 50, EmployeeType.Manager);
-
-employee1.DisplayEmployeeDetails();
-
-employee1.PerformWork();
-employee1.PerformWork(5);
-
-double receivedWage = employee1.ReceiveWage(true);
-
-Console.WriteLine($"wage paid: {receivedWage}");
+//int[] sampleArray1 = new int[5];
 
 
-Employee employee2 = new Employee("George", "Jones", "email@email.com", birthday, 30, EmployeeType.Sales);
+//int[] sampleArray2 = new int[] { 1, 2, 3, 4, 5 };
 
-employee2.DisplayEmployeeDetails();
-
-employee2.PerformWork(3);
-employee2.PerformWork(5);
-
-double receivedWage2 = employee2.ReceiveWage(true);
-
-Console.WriteLine($"wage paid: {receivedWage2}");
+////int[] sampleArray3 = new int[6] { 1, 2, 3, 4, 5 };
 
 
-//employee1.PerformWork(25);
+//Console.WriteLine("How many employees IDs do you want to register?");
 
-//int employee1Bonus = 100;
-//int bonus2;
+//int length = int.Parse(Console.ReadLine());
 
-//employee1.CalculateBonus(ref employee1Bonus, out bonus2);
+//int[] employeeIds = new int[length];
 
-//Console.WriteLine(employee1Bonus);
+////var testId = employeeIds[0];
+////Console.WriteLine(testId);
 
-//Console.WriteLine(bonus2);
+//for (int i = 0; i < length; i++)
+//{
+//    Console.Write("Enter the employee ID: ");
+//    int id = int.Parse(Console.ReadLine());//let's assume here that the user will always enter an int value
+//    employeeIds[i] = id;
+//}
 
+//for (int i = 0; i < employeeIds.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+//}
 
-//string name = "Bethany";
-//string name2 = name;
+//Array.Sort(employeeIds);
 
-//name += " Smith";
-
-//Console.WriteLine(name);
-//Console.WriteLine(name2);
-
-
-//StringBuilder sb = new StringBuilder();
-
-//sb.Append("Last name: ");
-//sb.AppendLine("Smith");
-
-//sb.Append("First name: ");
-//sb.AppendLine("Bethany");
-
-//string fullName = sb.ToString();
-
-//Console.WriteLine(fullName);
+//Console.WriteLine("After sorting");
+//for (int i = 0; i < employeeIds.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+//}
 
 
-WorkTask workTask;
+//int[] employeeIdsCopy = new int[length];
 
-workTask.description = "Bake pies";
-workTask.hours = 3;
+//employeeIds.CopyTo(employeeIdsCopy, 0);
 
-workTask.PerformWorkTask();
+//Array.Reverse(employeeIds);
 
-Account account = new Account("123432");
+//Console.WriteLine("After reversing original array");
+
+//for (int i = 0; i < employeeIds.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIds[i]}");
+//}
+
+//Console.WriteLine("Copy of array");
+
+//for (int i = 0; i < employeeIdsCopy.Length; i++)
+//{
+//    Console.WriteLine($"ID {i + 1}: \t{employeeIdsCopy[i]}");
+//}
+
+
+//List<int> employeeIds = new List<int>();
+//employeeIds.Add(55);
+//employeeIds.Add(1);
+//employeeIds.Add(943);
+//employeeIds.Add(78);
+//employeeIds.Add(78);
+
+////employeeIds.Add("test");
+
+//if (employeeIds.Contains(78))
+//{
+//    Console.WriteLine("78 is found!");
+//}
+
+
+
+//int currentAmountOfEmployees = employeeIds.Count;
+
+//var employeeIdsArray = employeeIds.ToArray();
+
+
+//employeeIds.Clear();
+
+
+//Console.WriteLine("How many employees IDs do you want to register?");
+
+//int length = int.Parse(Console.ReadLine());
+
+//for (int i = 0; i < length; i++)
+//{
+//    Console.Write("Enter the employee ID: ");
+//    int id = int.Parse(Console.ReadLine());//let's assume here that the user will always enter an int value
+//    employeeIds.Add(id);
+//}
+
+//Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+//Employee george = new("George", "Jones", "george@snowball.be", new DateTime(1984, 3, 28), 30);
+//Employee mary = new Employee("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+//Employee bobJunior = new Employee("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+//Employee kevin = new Employee("Kevin", "Marks", "kevin@snowball.be", new DateTime(1953, 12, 12), 10);
+//Employee kate = new Employee("Kate", "Greggs", "kate@snowball.be", new DateTime(1993, 8, 8), 10);
+//Employee kim = new Employee("Kim", "Jacobs", "kim@snowball.be", new DateTime(1975, 5, 14), 22);
+
+//List<Employee> employees = new List<Employee>();
+//employees.Add(george);
+//employees.Insert(0, bethany);
+//employees.Add(mary);
+//employees.Add(bobJunior);
+//employees.Add(kevin);
+//employees.Add(kate);
+//employees.Add(kim);
+////employees.Add(kim);
+
+//foreach (var employee in employees)
+//{
+//	employee.DisplayEmployeeDetails();
+//}
+
+
+
+Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1985, 1, 16), 30);
+
+mary.DisplayEmployeeDetails();
+
+mary.PerformWork();
+mary.PerformWork();
+mary.PerformWork();
+mary.ReceiveWage();
+
+
+Console.ReadLine();
+
+Researcher steve = new Researcher("Steve", "Smith", "steve@snowball.be", new DateTime(1985, 1, 16), 20);
