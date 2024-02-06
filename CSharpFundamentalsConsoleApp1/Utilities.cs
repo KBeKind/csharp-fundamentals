@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CSharpFundamentalsConsoleApp1.HR;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,155 +11,240 @@ namespace CSharpFundamentalsConsoleApp1
 {
 	internal class Utilities
 	{
+		private static string directory = @"C:\data\BethanysPieShopHRM\";
+		private static string fileName = "employees.txt";
 
-		public static void UsingSimpleStrings()
+		internal static void RegisterEmployee(List<Employee> employees)
 		{
+			Console.WriteLine("Creating an employee");
 
-			string firstName = "Bethany";
-			string lastName = "Smith";
-			string s;
-			s = firstName;
-			var userName = "BethanyS";
-			userName = userName.ToLower();
+			Console.WriteLine("What type of employee do you want to register?");
+			Console.WriteLine("1. Employee\n2. Manager\n3. Store manager\n4. Researcher\n5. Junior researcher");
+			Console.Write("Your selection: ");
+			string employeeType = Console.ReadLine();
 
-			userName = string.Empty;
-			userName = "";//identical to string.Empty;
-		}
-
-		public static void ManipulatingStrings()
-		{
-			string firstName = "Bethany";
-			string lastName = "Smith";
-
-
-			string fullName = firstName + " " + lastName;
-			string employeeIdentification = String.Concat(firstName, lastName);
-			//string empId = firstName.ToLower() + "-" + firstName.ToLower();
-			string empId = firstName.ToLower() + "-" + lastName.Trim().ToLower();
-			int length = empId.Length;
-
-
-			if (fullName.Contains("beth") || fullName.Contains("Beth"))
+			if (employeeType != "1" && employeeType != "2" && employeeType != "3"
+				&& employeeType != "4" && employeeType != "5")
 			{
-				Console.WriteLine("It's Bethany!");
+				Console.WriteLine("Invalid selection!");
+				return;
 			}
-			string subString = fullName.Substring(1, 3);
-			Console.WriteLine("Characters 2 to 4 of fullName are " + subString);
 
-			//string interpolation
-			string nameUsingInterpolation = $"{firstName}-{lastName}";
-			Console.WriteLine(nameUsingInterpolation);
-			//combined with implicit typing
-			var v = $"Hello, {firstName}!";
-			Console.WriteLine(v);
+			Console.Write("Enter the first name: ");
+			string firstName = Console.ReadLine();
+
+			Console.Write("Enter the last name: ");
+			string lastName = Console.ReadLine();
+
+			Console.Write("Enter the email: ");
+			string email = Console.ReadLine();
+
+			Console.Write("Enter the birth day: ");
+			DateTime birthDay = DateTime.Parse(Console.ReadLine());
+
+			Console.Write("Enter the hourly rate: ");
+			string hourlyRate = Console.ReadLine();
+			double rate = double.Parse(hourlyRate);
+
+			Employee employee = null;
+
+			switch (employeeType)
+			{
+				case "1":
+					employee = new Employee(firstName, lastName, email, birthDay, rate);
+					break;
+				case "2":
+					employee = new Manager(firstName, lastName, email, birthDay, rate);
+					break;
+				case "3":
+					employee = new StoreManager(firstName, lastName, email, birthDay, rate);
+					break;
+				case "4":
+					employee = new Researcher(firstName, lastName, email, birthDay, rate);
+					break;
+				case "5":
+					employee = new JuniorResearcher(firstName, lastName, email, birthDay, rate);
+					break;
+			}
+
+			employees.Add(employee);
+
+			Console.WriteLine("Employee created!\n\n");
 		}
 
-		public static void UsingEscapeCharacters()
+		internal static void CheckForExistingEmployeeFile()
 		{
-			string firstName = "Bethany";
-			string lastName = "Smith";
+			Console.ForegroundColor = ConsoleColor.Yellow;
 
-			string displayName = $"Welcome!\n{firstName}\t{lastName}";
+			string path = $"{directory}{fileName}";
 
-			string filePath = "C:\\data\\employeelist.xlsx";
-			string marketingTagLine = "Baking the \"best pies\" ever";
-
-			string verbatimFilePath = @"C:\data\employeelist.xlsx";
-		}
-
-		public static void UsingStringEquality()
-		{
-
-			string name1 = "Bethany";
-			string name2 = "BETHANY";
-
-			Console.WriteLine("Are both names equal? " + (name1 == name2));
-			Console.WriteLine("Is name equal to Bethany? " + (name1 == "Bethany"));
-			Console.WriteLine("Is name equal to BETHANY? " + name2.Equals("BETHANY"));
-			Console.WriteLine("Is uppercase name equal to bethany? " + (name1.ToLower() == "bethany"));
-		}
-
-		public static void ParsingStrings()
-		{
-			Console.Write("Enter the wage: ");
-			string wage = Console.ReadLine();
-
-			//int wageValue = int.Parse(wage);
-
-			double wageValue;
-			if (double.TryParse(wage, out wageValue))
-				Console.WriteLine("Parsing success: " + wageValue);
+			bool existingFileFound = File.Exists(path);
+			if (existingFileFound)
+			{
+				Console.WriteLine("An existing file with Employee data is found.");
+			}
 			else
-				Console.WriteLine("Parsing failed");
-
-			string hireDateString = "12/12/2020";
-			DateTime hireDate = DateTime.Parse(hireDateString);
-			Console.WriteLine("Parsed date: " + hireDate);
-			//TryParse also exists for dates
-
-			var cultureInfo = new CultureInfo("nl-BE");
-			string birthDateString = "28 Maart 1984";//Dutch, spoken in Belgium
-			var birthDate = DateTime.Parse(birthDateString, cultureInfo);
-			Console.WriteLine("Birth date: " + birthDate);
-
+			{
+				// CREATE DIRECTORY
+				if (!Directory.Exists(directory))
+					Directory.CreateDirectory(directory);
+				Console.WriteLine("Directory is ready for saving files.");
+			}
+			Console.ForegroundColor = ConsoleColor.Blue;
 
 		}
 
-		public static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked)
+		internal static void ViewAllEmployees(List<Employee> employees)
 		{
-			//Console.WriteLine($"The yearly wage is: {monthlyWage * numberOfMonthsWorked}");
-			//return monthlyWage * numberOfMonthsWorked;
-
-			if (numberOfMonthsWorked == 12)//let's add a bonus month
-				return monthlyWage * (numberOfMonthsWorked + 1);
-
-			return monthlyWage * numberOfMonthsWorked;
+			for (int i = 0; i < employees.Count; i++)
+			{
+				employees[i].DisplayEmployeeDetails();
+			}
 		}
 
-		public static int CalculateYearlyWage(int monthlyWage, int numberOfMonthsWorked, int bonus)
+		internal static void LoadEmployees(List<Employee> employees)
 		{
-			Console.WriteLine($"The yearly wage is: {monthlyWage * numberOfMonthsWorked + bonus}");
-			return monthlyWage * numberOfMonthsWorked + bonus;
+			string path = $"{directory}{fileName}";
+
+			try
+			{
+				if (File.Exists(path))
+				{
+					// CLEAR EMPLOYEES CURRENTLY IN MEMORY
+					employees.Clear();
+
+					// READ THE FILE
+					string[] employeesAsString = File.ReadAllLines(path);
+					for (int i = 0; i < employeesAsString.Length; i++)
+					{
+						// PARSING THE STRING INTO THE PARTS
+						// SPLITTING ON THE ; AND GRABBING THE TEXT AFTER THE :
+						string[] employeeSplits = employeesAsString[i].Split(';');
+						string firstName = employeeSplits[0].Substring(employeeSplits[0].IndexOf(':') + 1);
+						string lastName = employeeSplits[1].Substring(employeeSplits[1].IndexOf(':') + 1);
+						string email = employeeSplits[2].Substring(employeeSplits[2].IndexOf(':') + 1);
+						DateTime birthDay = DateTime.Parse(employeeSplits[3].Substring(employeeSplits[3].IndexOf(':') + 1));
+						double hourlyRate = double.Parse(employeeSplits[4].Substring(employeeSplits[4].IndexOf(':') + 1));
+						string employeeType = employeeSplits[5].Substring(employeeSplits[5].IndexOf(':') + 1);
+
+						Employee employee = null;
+
+						switch (employeeType)
+						{
+							case "1":
+								employee = new Employee(firstName, lastName, email, birthDay, hourlyRate);
+								break;
+							case "2":
+								employee = new Manager(firstName, lastName, email, birthDay, hourlyRate);
+								break;
+							case "3":
+								employee = new StoreManager(firstName, lastName, email, birthDay, hourlyRate);
+								break;
+							case "4":
+								employee = new Researcher(firstName, lastName, email, birthDay, hourlyRate);
+								break;
+							case "5":
+								employee = new JuniorResearcher(firstName, lastName, email, birthDay, hourlyRate);
+								break;
+						}
+
+
+						employees.Add(employee);
+
+					}
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine($"Loaded {employees.Count} employees!\n\n");
+			//		Console.ResetColor();
+
+				}
+			}
+			catch (FileNotFoundException fnfex)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("The file can not be found");
+				Console.WriteLine(fnfex.Message);
+				Console.WriteLine(fnfex.StackTrace);
+			//	Console.ResetColor();
+			}
+			catch (Exception ex)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Something went wrong");
+				Console.WriteLine(ex.Message);
+				Console.WriteLine(ex.StackTrace);
+			//	Console.ResetColor();
+			}
+			finally
+			{
+				Console.ResetColor();
+			}
+
 		}
 
-		public static double CalculateYearlyWage(double monthlyWage, double numberOfMonthsWorked, double bonus)
+		internal static void SaveEmployees(List<Employee> employees)
 		{
-			Console.WriteLine($"The yearly wage is: {monthlyWage * numberOfMonthsWorked + bonus}");
-			return monthlyWage * numberOfMonthsWorked + bonus;
+			// CONVERT EMPLOYEE TO A STRING
+			// ALSO WE COULD USE JSON.NET AND STORE IT AS JSON
+
+			string path = $"{directory}{fileName}";
+			StringBuilder sb = new StringBuilder();
+
+			foreach (var employee in employees)
+			{
+				string type = GetEmployeeType(employee);
+
+				sb.Append($"firstName:{employee.FirstName};");
+				sb.Append($"lastName:{employee.LastName};");
+				sb.Append($"email:{employee.Email};");
+				sb.Append($"birthDay:{employee.BirthDay.ToShortDateString()};");
+				sb.Append($"hourlyRate:{employee.HourlyRate};");
+				sb.Append($"type:{type};");
+				sb.Append(Environment.NewLine);
+			}
+
+			File.WriteAllText(path, sb.ToString());
+
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.WriteLine("Saved employees successfully");
+			Console.ResetColor();
 		}
 
-		public static void UsingOptionalParameters()
+		private static string GetEmployeeType(Employee employee)
 		{
-			int monthlyWage1 = 1234;
-			int months1 = 12;
-
-			int yearlyWageForEmployee1 = CalculateYearlyWageWithOptional(monthlyWage1, months1);
-			Console.WriteLine($"Yearly wage for employee 1 (Bethany): {yearlyWageForEmployee1}");
+			if (employee is Manager)
+				return "2";
+			else if (employee is StoreManager)
+				return "3";
+			else if (employee is JuniorResearcher)
+				return "5";
+			else if (employee is Researcher)
+				return "4";
+			else if (employee is Employee)
+				return "1";
+			return "0";
 		}
 
-		public static int CalculateYearlyWageWithOptional(int monthlyWage, int numberOfMonthsWorked, int bonus = 0)
+		internal static void LoadEmployeeById(List<Employee> employees)
 		{
 
-			Console.WriteLine($"The yearly wage is: {monthlyWage * numberOfMonthsWorked + bonus}");
-			return monthlyWage * numberOfMonthsWorked + bonus;
-		}
+			Console.WriteLine("Enter the employee ID: ");
+
+			try
+			{
+				int selectedId = int.Parse(Console.ReadLine());
+				Employee selectedEmployee = employees[selectedId];
+				selectedEmployee.DisplayEmployeeDetails();
+			}
+			catch (FormatException ex)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Invalid ID format");
+				Console.ResetColor();
+			}
+		
 
 
-		public static void UsingNamedArguments()
-		{
-			int amount = 1234;
-			int months = 12;
-			int bonus = 500;
 
-			int yearlyWageForEmployee1 = CalculateYearlyWageWithNamed(bonus: bonus, numberOfMonthsWorked: months, monthlyWage: amount);
-			Console.WriteLine($"Yearly wage for employee 1 (Bethany): {yearlyWageForEmployee1}");
-		}
-
-		public static int CalculateYearlyWageWithNamed(int monthlyWage, int numberOfMonthsWorked, int bonus)
-		{
-
-			Console.WriteLine($"The yearly wage is: {monthlyWage * numberOfMonthsWorked + bonus}");
-			return monthlyWage * numberOfMonthsWorked + bonus;
 		}
 	}
 }
