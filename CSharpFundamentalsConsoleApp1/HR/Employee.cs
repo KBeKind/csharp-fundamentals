@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace CSharpFundamentalsConsoleApp1.HR
 {
-    public class Employee: IEmployee
+    public class Employee : IEmployee
     {
         private string firstName;
         private string lastName;
@@ -14,7 +14,7 @@ namespace CSharpFundamentalsConsoleApp1.HR
         private double? hourlyRate;
 
         private DateTime birthDay;
-        private const int minimalHoursWorkedUnit = 1;
+        public const int minimalHoursWorkedUnit = 1;
 
         private Address address;
 
@@ -135,7 +135,6 @@ namespace CSharpFundamentalsConsoleApp1.HR
         public void PerformWork(int numberOfHours)
         {
             NumberOfHoursWorked += numberOfHours;
-            NumberOfHoursWorked++;
 
             Console.WriteLine($"{FirstName} {LastName} has worked for {numberOfHours} hour(s)!");
         }

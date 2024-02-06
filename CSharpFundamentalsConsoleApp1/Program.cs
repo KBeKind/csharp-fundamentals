@@ -160,8 +160,10 @@ mary.PerformWork();
 mary.PerformWork();
 mary.PerformWork();
 mary.ReceiveWage();
-
-
-Console.ReadLine();
+mary.GiveBonus();
 
 Researcher steve = new Researcher("Steve", "Smith", "steve@snowball.be", new DateTime(1985, 1, 16), 20);
+
+steve.GiveBonus();
+
+Console.ReadLine();
